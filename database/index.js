@@ -10,13 +10,11 @@ const sequelize = new Sequelize('notes','postgres','', {
     idle: 10000
   }
 });
-console.log('HEYDUDE');
  const models = {
   users: sequelize.import(`${__dirname}/models/users.js`),
   important: sequelize.import(`${__dirname}/models/important.js`),
   normal: sequelize.import(`${__dirname}/models/normal.js`)
  }
-console.log('HEYMAN');
 
  Object.keys(models).forEach((modelName) => {
   if('associate' in models[modelName]) {

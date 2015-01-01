@@ -1,24 +1,24 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var models = require('../database/index.js');
+var allNotes = require('./controllers/allNotes.js');
 
 var app = express();
 app.use(express.static(`${__dirname}/../client/dist/`));
 app.use(bodyParser.json());
 
 app.get('/everything',(req, res) => {
-
-  models.important.findAll()
+  allNotes.getAllNotes()
   .then((data) => {
-    res.status(200).send(data);
+    console.log(data,'beforeStuff');
+    Promise.all([data])
+    .then((data) => {
+      console.log(data, 'returnedStuff');
+    })
   })
-  .catch((error) => {
-    res.status(400).send(error);
-  });
 });
 
 app.post('/important', (req, res) => {
-  console.log(req.body, 'got body');
   models.important.findOrCreate({
     where: {
       message: req.body.importantInput
