@@ -3,7 +3,6 @@ const sequelize = new Sequelize('notes','postgres','', {
   host: 'localhost',
   port: 5433,
   dialect: 'postgres',
-  operatorsAliases: false,
   pool: {
     max: 5,
     min: 0,
@@ -12,23 +11,18 @@ const sequelize = new Sequelize('notes','postgres','', {
   }
 });
 
-const User = sequelize.define('user', {
-  firstName: {
-    type: Sequelize.STRING
-  },
-  lastName: {
-    type: Sequelize.STRING
-  }
-});
+console.log('HEYDUDE');
+ const models = {
+  users: sequelize.import(`${__dirname}/models/users.js`),
+  important: sequelize.import(`${__dirname}/models/important.js`)
+ }
 
-// force: true will drop the table if it already exists
-User.sync({force: true}).then(() => {
-  // Table created
-  return User.create({
-    firstName: 'John',
-    lastName: 'Hancock'
-  });
-});
+
+ Object.keys(models).forEach((modelName) => {
+  if('associate' in models[modelName]) {
+    models[modelName].associate(models);
+  }
+ });
 
 sequelize
 .authenticate()
@@ -39,4 +33,4 @@ sequelize
   console.log(`can't connect to database`, err);
 });
 
-module.exports = User;
+module.exports = models;
