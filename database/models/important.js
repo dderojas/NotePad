@@ -1,8 +1,7 @@
 const Sequelize = require('sequelize');
-var models = require('./users.js');
+var users = require('./users.js');
 
-module.exports = {
-  important: (sequelize, dataTypes) => {
+module.exports = (sequelize, dataTypes) => {
 
     const Important = sequelize.define('important', {
         message: {
@@ -11,12 +10,10 @@ module.exports = {
     });
 
     Important.associate = (models) => {
-      Important.belongsTo(models.user, {
+      Important.belongsTo(models.users, {
         foreignKey: 'userId'
       });
     }
 
     return Important;
-  }
-
 }

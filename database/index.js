@@ -10,19 +10,20 @@ const sequelize = new Sequelize('notes','postgres','', {
     idle: 10000
   }
 });
-
 console.log('HEYDUDE');
  const models = {
   users: sequelize.import(`${__dirname}/models/users.js`),
   important: sequelize.import(`${__dirname}/models/important.js`)
  }
-
+console.log('HEYMAN');
 
  Object.keys(models).forEach((modelName) => {
   if('associate' in models[modelName]) {
     models[modelName].associate(models);
   }
  });
+
+ models.sequelize = sequelize;
 
 sequelize
 .authenticate()
@@ -34,3 +35,10 @@ sequelize
 });
 
 module.exports = models;
+
+  // models parameter in the associate function?
+
+  // sequelize expects every model to export a function that
+  // returns a table definition.
+
+  // models.sequelize = sequelize ???
