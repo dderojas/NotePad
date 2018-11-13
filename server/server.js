@@ -11,6 +11,11 @@ app.get('/test',(req, res) => {
   res.status(200).json('goooooood');
 });
 
+app.post('/postTest', (req, res) => {
+  console.log(req.body, 'got body');
+  res.status(200).json('good post');
+});
+
 models.sequelize.sync({force: true}).then(() => {
   app.listen(3000, function() {
     console.log('connected all set!');
