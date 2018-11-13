@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -7,6 +8,16 @@ export default class App extends React.Component {
     this.state = {
       empty:''
     }
+  }
+
+  componentDidMount() {
+    axios.get('/test')
+    .then((res) => {
+      console.log(res,'axios get good');
+    })
+    .catch((error) => {
+      console.log(error,'axios get bad');
+    });
   }
 
   render() {
