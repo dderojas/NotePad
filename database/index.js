@@ -13,7 +13,8 @@ const sequelize = new Sequelize('notes','postgres','', {
 console.log('HEYDUDE');
  const models = {
   users: sequelize.import(`${__dirname}/models/users.js`),
-  important: sequelize.import(`${__dirname}/models/important.js`)
+  important: sequelize.import(`${__dirname}/models/important.js`),
+  normal: sequelize.import(`${__dirname}/models/normal.js`)
  }
 console.log('HEYMAN');
 
@@ -42,3 +43,4 @@ module.exports = models;
   // returns a table definition.
 
   // models.sequelize = sequelize ???
+  // .spread???

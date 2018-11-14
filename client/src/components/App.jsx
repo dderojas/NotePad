@@ -7,7 +7,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      important:''
+      important:[]
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -18,6 +18,9 @@ export default class App extends React.Component {
     axios.get('/test')
     .then((res) => {
       console.log(res,'axios get good');
+      this.setState({
+        important: res.data
+      });
     })
     .catch((error) => {
       console.log(error,'axios get bad');
@@ -54,6 +57,8 @@ export default class App extends React.Component {
         <h1>NotePad with PostgreSQL</h1>
         <input name='important' type='text' onChange={this.handleChange} value={this.state.important}></input>
         <button onClick={this.handleClick}>Save Important</button>
+        <br></br>
+        <div></div>
       </div>
     )
   }
