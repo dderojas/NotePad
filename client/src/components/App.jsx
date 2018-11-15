@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import List from './List.jsx';
+import NormalList from './NormalList.jsx';
+import ImportantList from './ImportantList.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      important:[]
+      importantInput:'',
+      normalInput:'',
+      importantList:[],
+      normalList:[]
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -15,12 +19,12 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/test')
+    axios.get('/everything')
     .then((res) => {
       console.log(res,'axios get good');
-      this.setState({
-        important: res.data
-      });
+      // this.setState({
+      //   importantList: res.data
+      // });
     })
     .catch((error) => {
       console.log(error,'axios get bad');
@@ -37,8 +41,11 @@ export default class App extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    var input = Object.assign({}, this.state);
-    axios.post('/postTest',input)
+    var {name} = e.target;
+    var input = {[name]: this.state[name]}
+    var path = e.target.className;
+
+    axios.post(`${path}`,input)
     .then((res) => {
       console.log(res, 'success post');
     })
@@ -47,7 +54,7 @@ export default class App extends React.Component {
     });
 
     this.setState({
-      important:''
+      [name]:''
     });
   }
 
@@ -55,10 +62,14 @@ export default class App extends React.Component {
     return(
       <div>
         <h1>NotePad with PostgreSQL</h1>
-        <input name='important' type='text' onChange={this.handleChange} value={this.state.important}></input>
-        <button onClick={this.handleClick}>Save Important</button>
+        <input name='importantInput' type='text' onChange={this.handleChange} value={this.state.importantInput}></input>
+        <button className='/important' name='importantInput' onClick={this.handleClick}>Save Important Note</button>
         <br></br>
-        <div></div>
+        <input name='normalInput' type='text' onChange={this.handleChange} value={this.state.normalInput}></input>
+        <button className='/normal' name='normalInput' onClick={this.handleClick}>Save Normal Note</button>
+        <br></br>
+        <div>{}</div>
+        <div>{}</div>
       </div>
     )
   }

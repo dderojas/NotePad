@@ -37,10 +37,3 @@ sequelize
 
 module.exports = models;
 
-  // models parameter in the associate function?
-
-  // sequelize expects every model to export a function that
-  // returns a table definition.
-
-  // models.sequelize = sequelize ???
-  // .spread???
