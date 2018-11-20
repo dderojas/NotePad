@@ -1,7 +1,7 @@
-import react from 'react';
+import React from 'react';
 
 const NormalList = (props) => (
-  <div></div>
+  <div>{props.notes}</div>
 );
 
 export default NormalList;

@@ -1,7 +1,7 @@
-import react from 'react';
+import React from 'react';
 
 const ImportantList = (props)=> (
-  <div></div>
+  <div>{props.notes}</div>
 );
 
 export default ImportantList;

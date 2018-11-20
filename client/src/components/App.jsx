@@ -22,9 +22,10 @@ export default class App extends React.Component {
     axios.get('/everything')
     .then((res) => {
       console.log(res,'axios get good');
-      // this.setState({
-      //   importantList: res.data
-      // });
+      this.setState({
+        importantList: res.data.imp,
+        normalList: res.data.norm
+      });
     })
     .catch((error) => {
       console.log(error,'axios get bad');
@@ -68,8 +69,14 @@ export default class App extends React.Component {
         <input name='normalInput' type='text' onChange={this.handleChange} value={this.state.normalInput}></input>
         <button className='/normal' name='normalInput' onClick={this.handleClick}>Save Normal Note</button>
         <br></br>
-        <div>{}</div>
-        <div>{}</div>
+        <h2>Important Notes</h2>
+        <div>{this.state.importantList.map((vals) => {
+          return <ImportantList notes={vals}/>
+        })}</div>
+        <h2>Normal Notes</h2>
+        <div>{this.state.normalList.map((vals) => {
+          return <NormalList notes={vals}/>
+        })}</div>
       </div>
     )
   }

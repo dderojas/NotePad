@@ -1,7 +1,7 @@
 var models = require('../../database/index.js');
 
 module.exports = {
-  getAllNotes: () => {
+  getAllNotes: (res) => {
     var notes = {};
     return models.important.findAll()
     .then((impNotes) => {
@@ -13,8 +13,7 @@ module.exports = {
         notes.imp = impNotes.map((value) => {
           return value.dataValues.message;
         });
-        console.log(notes,'IN CONTROLLER');
-        return notes;
+        res.status(200).json(notes);
       });
     })
     .catch((error) => {

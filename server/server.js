@@ -8,17 +8,13 @@ app.use(express.static(`${__dirname}/../client/dist/`));
 app.use(bodyParser.json());
 
 app.get('/everything',(req, res) => {
-  allNotes.getAllNotes()
-  .then((data) => {
-    console.log(data,'beforeStuff');
-    Promise.all([data])
-    .then((data) => {
-      console.log(data, 'returnedStuff');
-    })
-  })
+
+  allNotes.getAllNotes(res);
+
 });
 
 app.post('/important', (req, res) => {
+
   models.important.findOrCreate({
     where: {
       message: req.body.importantInput
@@ -35,7 +31,7 @@ app.post('/important', (req, res) => {
 });
 
 app.post('/normal', (req, res) => {
-  console.log(req.body, 'got body');
+
   models.normal.findOrCreate({
     where: {
       message: req.body.normalInput
