@@ -19,6 +19,7 @@
   "homepage": "https://github.com/dderojas/NotePad#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "bcrypt": "^3.0.3",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "pg": "^7.6.0",
