@@ -13,8 +13,7 @@ export default class LogIn extends React.Component {
 
   render() {
     return(
-      <BrowserRouter>
-        <div>
+      <div>
         <h1>Log In</h1>
         <input type="text" placeholder="Username"/>
         <input type="text" placeholder="Password"/>
@@ -23,8 +22,7 @@ export default class LogIn extends React.Component {
         </button>
         <button>Sign Up</button>
         <Route path="/notes" component={App}/>
-        </div>
-      </BrowserRouter>
+      </div>
     )
   }
 }
