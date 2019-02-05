@@ -20,7 +20,6 @@ export default class LogIn extends React.Component {
         <button>
           <Link to="/notes">Log In</Link>
         </button>
-        <button>Sign Up</button>
         <Route path="/notes" component={App}/>
       </div>
     )

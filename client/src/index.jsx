@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import App from './components/App.jsx';
-import LogIn from './components/LogIn.jsx';
+import Navbar from './components/Navbar.jsx';
 
 ReactDOM.render(
   <BrowserRouter>
-    <LogIn />
+    <Navbar />
   </BrowserRouter>, document.getElementById('app'));
