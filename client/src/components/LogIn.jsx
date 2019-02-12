@@ -1,7 +1,8 @@
 import React from 'react';
 import ReacDOM from 'react-dom';
-import {BrowserRouter,Route, Router, Link, Switch} from 'react-router-dom';
+import {BrowserRouter,Route, Router, Link, Switch, Redirect, withRouter} from 'react-router-dom';
 import App from './App.jsx';
+
 
 export default class LogIn extends React.Component {
   constructor(props) {
@@ -9,18 +10,22 @@ export default class LogIn extends React.Component {
     this.state = {
 
     }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    console.log('HEY');
+    this.props.history.push('/notes');
   }
 
   render() {
+    console.log('login',this.props.history);
     return(
       <div>
         <h1>Log In</h1>
         <input type="text" placeholder="Username"/>
         <input type="text" placeholder="Password"/>
-        <button>
-          <Link to="/notes">Log In</Link>
-        </button>
-        <Route path="/notes" component={App}/>
+        <button onClick={this.handleClick}>LogIn</button>
       </div>
     )
   }

@@ -59,6 +59,7 @@ export default class App extends React.Component {
   }
 
   render() {
+    console.log('I RENDERED!');
     return(
       <div>
         <h1>NotePad with PostgreSQL</h1>
