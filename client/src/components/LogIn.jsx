@@ -11,6 +11,11 @@ export default class LogIn extends React.Component {
 
     }
     this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+
   }
 
   handleClick(e) {
@@ -23,8 +28,8 @@ export default class LogIn extends React.Component {
     return(
       <div>
         <h1>Log In</h1>
-        <input type="text" placeholder="Username"/>
-        <input type="text" placeholder="Password"/>
+        <input type="text" placeholder="Username" onChange={this.handleChange}/>
+        <input type="text" placeholder="Password" onChange={this.handleChange}/>
         <button onClick={this.handleClick}>LogIn</button>
       </div>
     )
