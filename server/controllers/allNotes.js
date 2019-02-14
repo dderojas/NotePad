@@ -21,5 +21,3 @@ module.exports = {
     });
   }
 }
-
-// array index, dataValues, message

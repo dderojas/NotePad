@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var models = require('../database/index.js');
 var allNotes = require('./controllers/allNotes.js');
+var createUser = require('./controllers/signUp.js');
 var bcrypt = require('bcrypt');
 
 var app = express();
@@ -49,11 +50,9 @@ app.post('/normal', (req, res) => {
 });
 
 app.post('/signUp', (req, res) => {
-  console.log('post got to server',req.body);
+  console.log('test',req.body);
 
-  bcrypt.hash(plaintextPassword, saltRounds, (err, hash) => {
-
-  });
+  createUser.signUp(req.body.Username, req.body.Password, res);
 });
 
 
