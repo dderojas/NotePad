@@ -48,6 +48,14 @@ app.post('/normal', (req, res) => {
   res.status(200).json(res, 'good post');
 });
 
+app.post('/signUp', (req, res) => {
+  console.log('post got to server',req.body);
+
+  bcrypt.hash(plaintextPassword, saltRounds, (err, hash) => {
+
+  });
+});
+
 
 models.sequelize.sync({force: true}).then(() => {
   app.listen(3000, function() {

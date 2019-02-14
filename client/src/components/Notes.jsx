@@ -62,7 +62,6 @@ export default class Notes extends React.Component {
     console.log('I RENDERED!');
     return(
       <div>
-        <h1>NotePad with PostgreSQL</h1>
         <input name='importantInput' type='text' onChange={this.handleChange} value={this.state.importantInput}></input>
         <button className='/important' name='importantInput' onClick={this.handleClick}>Save Important Note</button>
         <br></br>

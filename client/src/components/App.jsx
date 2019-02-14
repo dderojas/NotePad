@@ -21,6 +21,7 @@ export default class App extends React.Component {
               <Link to="/signUp">SignUp</Link>
             </Menu.Item>
           </Menu>
+          <h1>NOTEPAD APP</h1>
           <Route path="/notes" component={Notes}/>
           <Route path="/logIn" component={LogIn}/>
           <Route path="/signUp" component={SignUp}/>

@@ -1,10 +1,12 @@
 import React from 'react';
+import axios from 'axios';
 
 export default class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      Username:"",
+      Password:""
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -12,10 +14,29 @@ export default class SignUp extends React.Component {
   }
 
   handleChange(e) {
+    e.preventDefault();
+    var {name, value} = e.target;
 
+    this.setState({
+      [name]: value
+    });
   }
 
   handleClick(e) {
+    e.preventDefault();
+
+    axios.post('/signUp', this.state)
+    .then((res) => {
+      console.log('good post', res);
+    })
+    .catch((err) => {
+      console.log('bad post', err);
+    });
+
+    this.setState({
+      Username:"",
+      Password:""
+    });
 
   }
 
@@ -23,8 +44,8 @@ export default class SignUp extends React.Component {
     return(
       <div>
         <h1>Sign Up!</h1>
-        <input type="text" placeholder="Enter Username" onChange={this.handleChange}></input>
-        <input type="text" placeholder="Enter Password" onChange={this.handleChange}></input>
+        <input type="text" name="Username" placeholder="Enter Username" value={this.state.Username} onChange={this.handleChange}></input>
+        <input type="text" name="Password" placeholder="Enter Password" value={this.state.Password} onChange={this.handleChange}></input>
         <button onClick={this.handleClick}>Sign Up</button>
       </div>
     )
