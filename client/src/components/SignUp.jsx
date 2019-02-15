@@ -27,10 +27,11 @@ export default class SignUp extends React.Component {
 
     axios.post('/signUp', this.state)
     .then((res) => {
-      console.log('good post', res);
+      console.log('good signUp', res);
+      this.props.history.push('/notes');
     })
     .catch((err) => {
-      console.log('bad post', err);
+      console.log('bad signUp', err);
     });
 
     this.setState({

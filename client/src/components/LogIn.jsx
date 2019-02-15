@@ -25,7 +25,21 @@ export default class LogIn extends React.Component {
   }
 
   handleClick(e) {
-    this.props.history.push('/notes');
+    axios.post('/logIn', this.state)
+    .then((res) => {
+      console.log('good logIn', res);
+      if(res.data === true) {
+        this.props.history.push('/notes');
+      }
+    })
+    .catch((err) => {
+      console.log('bad logIn', err);
+    })
+
+    this.setState({
+      Username:"",
+      Password:""
+    });
   }
 
   render() {

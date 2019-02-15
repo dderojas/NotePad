@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var models = require('../database/index.js');
 var allNotes = require('./controllers/allNotes.js');
-var createUser = require('./controllers/signUp.js');
+var user = require('./controllers/user.js');
 var bcrypt = require('bcrypt');
 
 var app = express();
@@ -50,9 +50,14 @@ app.post('/normal', (req, res) => {
 });
 
 app.post('/signUp', (req, res) => {
-  console.log('test',req.body);
+  console.log('signUp test',req.body);
 
-  createUser.signUp(req.body.Username, req.body.Password, res);
+  user.signUp(req.body.Username, req.body.Password, res);
+});
+
+app.post('/logIn', (req, res) => {
+  console.log('logIn test', req.body);
+  user.logIn(req.body.Username, req.body.Password, res);
 });
 
 
