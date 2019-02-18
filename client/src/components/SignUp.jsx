@@ -29,6 +29,8 @@ export default class SignUp extends React.Component {
     .then((res) => {
       console.log('good signUp', res);
       this.props.history.push('/notes');
+      sessionStorage.setItem('loggedIn', true);
+      console.log('sessionTest', sessionStorage);
     })
     .catch((err) => {
       console.log('bad signUp', err);

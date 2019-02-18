@@ -1,13 +1,19 @@
 var express = require('express');
-var bodyParser = require('body-parser');
-var models = require('../database/index.js');
 var allNotes = require('./controllers/allNotes.js');
-var user = require('./controllers/user.js');
+var bodyParser = require('body-parser');
 var bcrypt = require('bcrypt');
+var cookieSession = require('cookie-session');
+var models = require('../database/index.js');
+var session = require('express-session');
+var user = require('./controllers/user.js');
+
 
 var app = express();
 app.use(express.static(`${__dirname}/../client/dist/`));
 app.use(bodyParser.json());
+app.use(cookieSession({
+  keys:['something']
+}));
 
 app.get('/everything',(req, res) => {
 
@@ -51,7 +57,6 @@ app.post('/normal', (req, res) => {
 
 app.post('/signUp', (req, res) => {
   console.log('signUp test',req.body);
-
   user.signUp(req.body.Username, req.body.Password, res);
 });
 

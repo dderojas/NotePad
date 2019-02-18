@@ -1,5 +1,5 @@
-var models = require('../../database/index.js');
 var bcrypt = require('bcrypt');
+var models = require('../../database/index.js');
 var saltRounds = 10;
 
 module.exports = {
@@ -22,8 +22,6 @@ module.exports = {
     })
   },
   logIn: (username, password, res) => {
-    // find hashed password via username
-    console.log(username,'before something');
     models.users.findOne({
       where: {
         userName: username
@@ -34,13 +32,13 @@ module.exports = {
         var hash = user.passWord;
         bcrypt.compare(password, hash)
           .then((result) => {
-            console.log(result,'good or bad password');
             res.status(200).json(result);
           });
       }
     })
     .catch((err) => {
-      console.log(err,'something error');
+      console.log(err,'Username does not exist');
+      res.status(400).json(err);
     })
   }
 }

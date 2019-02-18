@@ -8,6 +8,7 @@ import { Menu } from 'semantic-ui-react';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    // if logged in, go straight to notes page
   }
 
   render() {
