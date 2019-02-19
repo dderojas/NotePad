@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default class SignUp extends React.Component {
   constructor(props) {
@@ -30,7 +31,7 @@ export default class SignUp extends React.Component {
       console.log('good signUp', res);
       this.props.history.push('/notes');
       sessionStorage.setItem('loggedIn', true);
-      console.log('sessionTest', sessionStorage);
+      this.props.updateLogin();
     })
     .catch((err) => {
       console.log('bad signUp', err);
@@ -49,7 +50,7 @@ export default class SignUp extends React.Component {
         <h1>Sign Up!</h1>
         <input type="text" name="Username" placeholder="Enter Username" value={this.state.Username} onChange={this.handleChange}></input>
         <input type="text" name="Password" placeholder="Enter Password" value={this.state.Password} onChange={this.handleChange}></input>
-        <button onClick={this.handleClick}>Sign Up</button>
+        <button onClick={this.handleClick}>SignUp</button>
       </div>
     )
   }

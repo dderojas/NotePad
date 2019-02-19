@@ -31,7 +31,7 @@ export default class LogIn extends React.Component {
       if(res.data === true) {
         this.props.history.push('/notes');
         sessionStorage.setItem('loggedIn', res.data);
-        console.log('session test', sessionStorage);
+        this.props.updateLogin();
       }
     })
     .catch((err) => {

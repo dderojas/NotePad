@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import NormalList from './NormalList.jsx';
 import ImportantList from './ImportantList.jsx';
 
@@ -59,7 +60,7 @@ export default class Notes extends React.Component {
   }
 
   render() {
-    console.log('I RENDERED!');
+    console.log('Notes RENDERED!');
     return(
       <div>
         <input name='importantInput' type='text' onChange={this.handleChange} value={this.state.importantInput}></input>
