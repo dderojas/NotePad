@@ -12,7 +12,7 @@ export default class App extends React.Component {
       user:"",
       loggedIn: sessionStorage.getItem('loggedIn')
     }
-    this.handleClick = this.handleClick.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this);
     this.checkLogIn = this.checkLogIn.bind(this);
   }
 
@@ -23,9 +23,8 @@ export default class App extends React.Component {
     // });
   }
 
-  handleClick(e) {
+  handleLogOut(e) {
     e.preventDefault();
-    console.log('log out');
     sessionStorage.clear();
     this.setState({
       loggedIn: sessionStorage.getItem('loggedIn')
@@ -33,8 +32,7 @@ export default class App extends React.Component {
   }
 
   checkLogIn(e) {
-    // e.preventDefault();
-    console.log('App state');
+    // e.preventDefault(), why doesn't this work?
     this.setState({
       loggedIn: sessionStorage.getItem('loggedIn')
     });
@@ -50,7 +48,7 @@ export default class App extends React.Component {
             <Menu.Item name='SignUp' active={true}>
               <Link to="/signUp">SignUp</Link>
             </Menu.Item>
-            <Menu.Item name="LogOut" active={true} onClick={this.handleClick}>
+            <Menu.Item name="LogOut" active={true} onClick={this.handleLogOut}>
               <Link to="/logIn" >LogOut</Link>
             </Menu.Item>
             <Menu.Item name={this.state.loggedIn}/>

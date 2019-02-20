@@ -60,7 +60,6 @@ export default class Notes extends React.Component {
   }
 
   render() {
-    console.log('Notes RENDERED!');
     return(
       <div>
         <input name='importantInput' type='text' onChange={this.handleChange} value={this.state.importantInput}></input>
