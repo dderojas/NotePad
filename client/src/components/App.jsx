@@ -27,13 +27,15 @@ export default class App extends React.Component {
     e.preventDefault();
     sessionStorage.clear();
     this.setState({
+      user:"",
       loggedIn: sessionStorage.getItem('loggedIn')
     });
   }
 
-  checkLogIn(e) {
+  checkLogIn(currentUser) {
     // e.preventDefault(), why doesn't this work?
     this.setState({
+      user: currentUser,
       loggedIn: sessionStorage.getItem('loggedIn')
     });
   }
@@ -51,7 +53,7 @@ export default class App extends React.Component {
             <Menu.Item name="LogOut" active={true} onClick={this.handleLogOut}>
               <Link to="/logIn" >LogOut</Link>
             </Menu.Item>
-            <Menu.Item name={this.state.loggedIn}/>
+            <Menu.Item name={`Welcome ${this.state.user}`}/>
           </Menu>
           <h1>NOTEPAD APP</h1>
           <Route path="/notes" component={Notes}/>

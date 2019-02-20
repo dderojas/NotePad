@@ -25,13 +25,13 @@ export default class SignUp extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-
+    var currentUser = this.state.Username;
     axios.post('/signUp', this.state)
     .then((res) => {
       console.log('good signUp', res);
       this.props.history.push('/notes');
       sessionStorage.setItem('loggedIn', true);
-      this.props.updateLogin();
+      this.props.updateLogin(currentUser);
     })
     .catch((err) => {
       console.log('bad signUp', err);
