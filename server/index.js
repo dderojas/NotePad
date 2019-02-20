@@ -11,8 +11,13 @@ var user = require('./controllers/user.js');
 var app = express();
 app.use(express.static(`${__dirname}/../client/dist/`));
 app.use(bodyParser.json());
-app.use(cookieSession({
-  keys:['something']
+app.use(session({
+  secret:'testSecret',
+  resave: false,
+  saveUninitialized: false,
+  cookie:{
+    maxAge: 60000
+  }
 }));
 
 app.get('/everything',(req, res) => {
@@ -56,7 +61,7 @@ app.post('/normal', (req, res) => {
 });
 
 app.post('/signUp', (req, res) => {
-  console.log('signUp test',req.body);
+  console.log('signUp test',req.session.id);
   user.signUp(req.body.Username, req.body.Password, res);
 });
 
