@@ -2,7 +2,6 @@ var express = require('express');
 var allNotes = require('./controllers/allNotes.js');
 var bodyParser = require('body-parser');
 var bcrypt = require('bcrypt');
-var cookieSession = require('cookie-session');
 var models = require('../database/index.js');
 var session = require('express-session');
 var user = require('./controllers/user.js');

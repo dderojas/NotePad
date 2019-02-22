@@ -1,7 +1,7 @@
 {
   "name": "notepad",
   "version": "1.0.0",
-  "description": "",
+  "description": "Notepad with react, express, and postgres",
   "main": "server/index.js",
   "scripts": {
     "dev-server": "nodemon server/index.js",
@@ -20,6 +20,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt": "^3.0.3",
+    "connect-pg-simple": "^5.0.0",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
