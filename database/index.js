@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('notes','postgres','', {
+const sequelize = new Sequelize('notes','postgres','asdf', {
   host: 'localhost',
-  port: 5433,
+  port: 5432,
   dialect: 'postgres',
   pool: {
     max: 5,

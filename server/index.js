@@ -10,14 +10,16 @@ var user = require('./controllers/user.js');
 var app = express();
 app.use(express.static(`${__dirname}/../client/dist/`));
 app.use(bodyParser.json());
-app.use(session({
-  secret:'testSecret',
-  resave: false,
-  saveUninitialized: false,
-  cookie:{
-    maxAge: 60000
-  }
-}));
+// app.use(session({
+//   secret:'testSecret',
+//   store:new (require('connect-pg-simple')(session))(),
+//   resave: false,
+//   saveUninitialized: false,
+//   cookie:{
+//     maxAge: 60000
+//   }
+// }));
+// /library/PostgreSQL/10/bin for $PATH variable
 
 app.get('/everything',(req, res) => {
 
@@ -60,7 +62,7 @@ app.post('/normal', (req, res) => {
 });
 
 app.post('/signUp', (req, res) => {
-  console.log('signUp test',req.session.id);
+  // console.log('signUp test',req.session.id);
   user.signUp(req.body.Username, req.body.Password, res);
 });
 
@@ -75,4 +77,3 @@ models.sequelize.sync({force: true}).then(() => {
     console.log('connected all set!');
   });
 });
-

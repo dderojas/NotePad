@@ -13,7 +13,6 @@ export default class Notes extends React.Component {
       importantList:[],
       normalList:[]
     }
-
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -60,15 +59,20 @@ export default class Notes extends React.Component {
   }
 
   render() {
+    var dateObj = new Date();
+    var month = dateObj.getMonth()+1;
+    var date = dateObj.getDate();
+    var year = dateObj.getFullYear();
     return(
       <div>
+      <h2>{`${month}/${date}/${year}`}</h2>
         <input name='importantInput' type='text' onChange={this.handleChange} value={this.state.importantInput}></input>
-        <button className='/important' name='importantInput' onClick={this.handleClick}>Save Important Note</button>
+        <button className='/important' name='importantInput' onClick={this.handleClick}>Save Don't Forget Note</button>
         <br></br>
         <input name='normalInput' type='text' onChange={this.handleChange} value={this.state.normalInput}></input>
         <button className='/normal' name='normalInput' onClick={this.handleClick}>Save Normal Note</button>
         <br></br>
-        <h2>Important Notes</h2>
+        <h2>Don't Forget Notes</h2>
         <div>{this.state.importantList.map((vals) => {
           return <ImportantList notes={vals}/>
         })}</div>
