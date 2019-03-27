@@ -63,6 +63,10 @@ export default class Notes extends React.Component {
     var month = dateObj.getMonth()+1;
     var date = dateObj.getDate();
     var year = dateObj.getFullYear();
+    var backCover = {
+      backgroundImage: `url(https://ya-webdesign.com/images/notepad-background-png-1.png)`,
+      backgroundRepeat: `no-repeat`
+    }
     return(
       <div>
       <h2>{`${month}/${date}/${year}`}</h2>
@@ -72,14 +76,16 @@ export default class Notes extends React.Component {
         <input name='normalInput' type='text' onChange={this.handleChange} value={this.state.normalInput}></input>
         <button className='/normal' name='normalInput' onClick={this.handleClick}>Save Normal Note</button>
         <br></br>
-        <h2>Don't Forget Notes</h2>
-        <div>{this.state.importantList.map((vals) => {
-          return <ImportantList notes={vals}/>
-        })}</div>
-        <h2>Normal Notes</h2>
-        <div>{this.state.normalList.map((vals) => {
-          return <NormalList notes={vals}/>
-        })}</div>
+        <div style={backCover}>
+          <h2>Don't Forget Notes</h2>
+          <div>{this.state.importantList.map((vals) => {
+            return <ImportantList notes={vals}/>
+          })}</div>
+          <h2>Normal Notes</h2>
+          <div>{this.state.normalList.map((vals) => {
+            return <NormalList notes={vals}/>
+          })}</div>
+        </div>
       </div>
     )
   }
